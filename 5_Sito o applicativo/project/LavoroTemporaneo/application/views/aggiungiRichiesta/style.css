@@ -1,0 +1,38 @@
+/*
+* Questo è il css, lo stile della pagina di aggiungi una richiesta 
+*/
+body {
+	margin: 0;
+}
+
+a{
+	text-decoration: none;
+}
+.header{
+    position: relative;
+    overflow: hidden;
+    border: 2px solid black;
+}
+.topnav_left, .topnav_center, .topnav_right{
+    display: inline-block;
+    padding: 16px;
+    margin: 1px;
+    border: 1px solid black;
+}
+.topnav_center{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -51%);
+}
+.topnav_left{
+    float: left;
+}
+.topnav_right{
+    float: right;
+}
+.disabled{
+    border-style: none;
+    background: lightgray;
+    cursor: default;
+}

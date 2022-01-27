@@ -1,0 +1,48 @@
+/*
+* Questo è il css, lo stile della pagina index
+*/
+body{
+    margin: 0;
+}
+a{
+    text-decoration: none;
+}
+.header{
+    position: relative;
+    overflow: hidden;
+    border: 2px solid black;
+}
+.main{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+.topnav_left, .topnav_center, .topnav_right{
+    display: inline-block;
+    padding: 16px;
+    margin: 1px;
+    border: 1px solid black;
+}
+.topnav_center{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -51%);
+}
+.topnav_left{
+    float: left;
+}
+.topnav_right{
+    float: right;
+}
+table, td, th{  
+    border: 1px solid black;
+    text-align: left;
+}
+table{
+    border-collapse: collapse;
+    width: 100%;
+}
+th, td{
+    width: 12.5%;
+    padding: 5px;
+}
