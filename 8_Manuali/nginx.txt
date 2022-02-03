@@ -1,3 +1,5 @@
+reff.: https://help.clouding.io/hc/en-us/articles/360019908839-How-to-set-up-Nginx-load-balancing-server-on-Ubuntu-20-04
+
 - On every server:
 apt-get install nginx -y 
 systemctl start nginx
