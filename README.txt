@@ -5,7 +5,7 @@ D:
 
 cd <cartella>
 
-git clone https://github.com/SamueleAbba/LavoroTemporaneo.git <cartella>
+git clone https://github.com/GioeleCavallo/Video-Processing-Cluster.git <cartella>
 !visualizzare elementi nascosti.
 
 Per aggiungere o rimuovere file o cartelle eseguire i comandi seguenti:
