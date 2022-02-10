@@ -1,0 +1,37 @@
+reff.: https://help.clouding.io/hc/en-us/articles/360019908839-How-to-set-up-Nginx-load-balancing-server-on-Ubuntu-20-04
+
+- On every server:
+apt-get install nginx -y 
+systemctl start nginx
+systemctl enable nginx
+
+rm -rf /usr/share/nginx/html/index.html
+nano /usr/share/nginx/html/index.html
+
+- On Balancer:
+rm -rf /etc/nginx/sites-enabled/default 
+nano /etc/nginx/conf.d/load-balancing.conf
+
+upstream backend {
+	least_time header;
+        server 192.168.10.11;
+        server 192.168.10.12;
+    }
+	
+    server {
+        listen      80;
+        server_name loadbalancing.example.com;
+
+        location / {
+	        proxy_redirect      off;
+	        proxy_set_header    X-Real-IP $remote_addr;
+	        proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for;
+	        proxy_set_header    Host $http_host;
+		proxy_pass http://backend;
+	}
+}
+
+Close and save
+
+nginx -t
+systemctl restart nginx
