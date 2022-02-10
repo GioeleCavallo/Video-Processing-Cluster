@@ -1,0 +1,2 @@
+guida nginx php:
+https://turbolab.it/webserver-2954/guida-definitiva-nginx-php-8-ubuntu-centos-come-attivare-installare-configurare-php-fpm-nginx-linux-1957
