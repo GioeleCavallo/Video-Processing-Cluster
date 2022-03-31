@@ -1,0 +1,43 @@
+#drop_file_zone {
+	background-color: #EEE;
+    border: #999 5px dashed;
+    width: 300px;
+    height: 200px;
+    padding: 8px;
+    font-size: 18px;
+}
+#drag_upload_file {
+	width:100%;
+}
+#drag_upload_file p {
+  text-align: center;
+}
+#drag_upload_file #selectfile {
+	display: none;
+}
+body{
+	width: 50%;
+	height: 50%;
+	position: relative;
+}
+#center{
+	width: 100%;
+	height: auto;
+	position: absolute;
+	left: 50%;
+	margin: -25px 0 0 -25px;
+}
+#title, #subTitle{
+	text-align: center;
+}
+#title_divisor{
+	border: 1px solid gray;
+}
+#drop_file_zone, #subTitle_divisor{
+	position: relative;
+	width: 98.1%;
+	text-align: center;
+}
+#drop_not_file_zone{
+	border: none;
+}
