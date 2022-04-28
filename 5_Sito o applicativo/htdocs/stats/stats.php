@@ -57,126 +57,150 @@ $P = round($quantitaP/$totale*100);
 ?>
 
 <head>
-        <!--<link rel="stylesheet" href="css/css.css" />-->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<link href="../css/stats.css" rel="stylesheet" >
 </head>
 
 <html>
 
 
-
+<header>
+	<h6>your access token: <?php echo "123123123";?></h6>
+</header>
 <body>
-        <div id="center">
-                <h1 id="title">Statistics</h1>
-                <hr id="title_divisor">
-                <div>
-                                <?php
-                                echo "Frame B: $B %<br>";
-                                echo "Frame I: $I %<br>";
-                                echo "Frame P: $P %<br>";
-                                ?>
-								<script src="stats/Chart.js"></script>
+	<div id="center">
+			
+		<div class="title-container">
+			<h1 class="title">Statistics</h1>
+			
+			<hr class="title_divisor">
+			<table>
+				<tr>
+					<th colspan="2" align="center">Legenda</th>
+				</tr>
+				<tr>
+					<td><?php echo "Frame B<br>"; ?></td>
+					<td><?php echo " $B %<br>"; ?></td>
+				</tr>
+				<tr>
+					<td><?php echo "Frame I<br>"; ?></td>
+					<td><?php echo " $I %<br>"; ?></td>
+				</tr>
+				<tr>
+					<td><?php echo "Frame P<br>"; ?></td>
+					<td><?php echo " $P %<br>"; ?></td>
+				</tr>
 
-								<div id="containerPie" style="display:block;max-width:25%;height:auto;margin-left:25%;margin-bottom:5%">
-									<canvas id="myChart"></canvas>
-								</div>
-								<div id="containerPie" style="display:block;max-width:50%;height:auto;margin-left:25%;margin-top:5%">
-									<canvas id="frequencyChart"></canvas>
-								</div>
-                                <script>
-										// percentige
-                                        var xValues = ["Frame: B", "Frame: I", "Frame: P"];
-                                        var yValues = [<?php echo $quantitaB;?>, <?php echo $quantitaI;?>, <?php echo $quantitaP;?>];
-                                        var barColors = ["gray","lightgray","Black"];
-                                        new Chart("myChart", {
-                                                type: "pie",
-                                                data: {
-                                                        labels: xValues,
-                                                        datasets: [{
-                                                                backgroundColor: barColors,
-                                                                data: yValues
-                                                        }]
-                                                },
-                                                options: {
-                                                        title: {
-                                                                display: true,
-                                                                text: "Frequency Frame"
-                                                        }
-                                                }
-                                        });
-					// bar
-					var xValuesBar = [<?php
-					$max = COUNT($timeStamp);
-					for($i = 0;$i < $max; $i++){
-						if($i == $max -1){
-							echo "$timeStamp[$i]";
-						}else{
-							echo "$timeStamp[$i], ";
-						}
-					}
-					?>];
-                                        var yValuesBar = [<?php
-					$max = COUNT($sizeBar);
-					for($i = 0;$i < $max; $i++){
-						if($i == $max -1){
-							echo "$sizeBar[$i]";
-						}else{
-							echo "$sizeBar[$i], ";
-						}
-					}
-					?>];
-					var barColors = [<?php
-					$max = COUNT($colorsBar);
-					for($i = 0;$i < $max; $i++){
-						if($i == $max -1){
-							echo "\"$colorsBar[$i]\"";
-						}else{
-							echo "\"$colorsBar[$i]\", ";
-						}
-					}
-					?>];
+			</table>
 
-					new Chart("frequencyChart", {
-						type: "bar",
-						data: {
-							labels: xValuesBar,
-							datasets: [{
-								backgroundColor: barColors,
-								data: yValuesBar
-							}]
-						},
-						options: {
-							legend: {display: false},
-							title: {
-								display: true,
-								text: "Frequency"
-							}
-						}
+			<script src="Chart.js"></script>
+
+			<div id="containerPie" >
+				<canvas id="pieChart"></canvas>
+			</div>
+			<br>
+			<br>
+			<br>
+			<br>
+			<div id="containerPie" >
+				<canvas id="frequencyChart"></canvas>
+			</div>
+			<script>
+				// percentige
+				var xValues = ["Frame: B", "Frame: I", "Frame: P"];
+				var yValues = [<?php echo $quantitaB; ?>, <?php echo $quantitaI; ?>, <?php echo $quantitaP; ?>];
+				var barColors = ["red", "green", "blue"];
+				var options_char = {
+					title: {
+						display: true,
+						text: "Frequency Frame"
+					},
+				};
+				var ctx = document.getElementById("pieChart").getContext('2d');
+				new Chart(ctx, {
+					type: "pie",
+					data: {
+						labels: xValues,
+						datasets: [{
+							backgroundColor: barColors,
+							data: yValues
+						}]
+					},
+					options: options_char,
 					});
-                		</script>
-                </div>
-				<div style="margin:10%">
-					<br>
-					<h1 id="title">Settings</h1>
-					<hr id="title_divisor">
-					<div id="drop_not_file_zone">
-							<form action="action_page.php">
-									<!--<input type="checkbox" id="change1" name="change1" value="change1">-->
-									<label for="change1"><a href='<?php echo "./upload/".$GLOBALS["DIR_PATH"]."motion.mp4" ?>'>Motion vector</a></label><br>
+				// bar
+				var xValuesBar = [<?php
+									$max = COUNT($timeStamp);
+									for ($i = 0; $i < $max; $i++) {
+										if ($i == $max - 1) {
+											echo "$timeStamp[$i]";
+										} else {
+											echo "$timeStamp[$i], ";
+										}
+									}
+									?>];
+				var yValuesBar = [<?php
+									$max = COUNT($sizeBar);
+									for ($i = 0; $i < $max; $i++) {
+										if ($i == $max - 1) {
+											echo "$sizeBar[$i]";
+										} else {
+											echo "$sizeBar[$i], ";
+										}
+									}
+									?>];
+				var barColors = [<?php
+									$max = COUNT($colorsBar);
+									for ($i = 0; $i < $max; $i++) {
+										if ($i == $max - 1) {
+											echo "\"$colorsBar[$i]\"";
+										} else {
+											echo "\"$colorsBar[$i]\", ";
+										}
+									}
+									?>];
 
-									<!--<input type="checkbox" id="change2" name="change2" value="change2">-->
-									<label for="change2"><a href='<?php echo "./upload/".$GLOBALS["DIR_PATH"]."I_frames.mp4" ?>'>Recreate with only frames I</a></label><br>
-									<!--<input type="checkbox" id="change3" name="change3" value="change3">-->
-									<label for="change2"><a href='<?php echo "./upload/".$GLOBALS["DIR_PATH"]."B_frames.mp4" ?>'>Recreate with only frames B</a></label><br>
-									<label for="change2"><a href='<?php echo "./upload/".$GLOBALS["DIR_PATH"]."P_frames.mp4" ?>'>Recreate with only frames P</a></label><br>
-
-									<label for="change3"><a href='<?php echo "./upload/".$GLOBALS["DIR_PATH"]."zip.zip" ?>'>Download Zip with all the frames</a></label><br><br>
-
-									<!--<input type="submit" value="Download">-->
-							</form>
-					</div>
-					<br>
-				</div>
+				new Chart("frequencyChart", {
+					type: "bar",
+					data: {
+						labels: xValuesBar,
+						datasets: [{
+							backgroundColor: barColors,
+							data: yValuesBar
+						}]
+					},
+					options: {
+						legend: {
+							display: false
+						},
+						title: {
+							display: true,
+							text: "Frequency"
+						}
+					}
+				});
+			</script>
 		</div>
+		<div class="title-container">
+			<br>
+			<h1 class="title">Download</h1>
+			<hr class="title_divisor">
+			<div id="drop_not_file_zone">
+				<ul>
+					<li><label for="change1"><a href='<?php echo $filePath . "motion.mp4" ?>'>Motion vector</a></label></li>
+					<li><label for="change2"><a href='<?php echo $filePath . "I_frames.mp4" ?>'>Recreate with only frames I</a></label></li>
+					<li><label for="change2"><a href='<?php echo $filePath . "B_frames.mp4" ?>'>Recreate with only frames B</a></label></li>
+					<li><label for="change2"><a href='<?php echo $filePath . "P_frames.mp4" ?>'>Recreate with only frames P</a></label></li>
+
+					<li><label for="change3"><a href='<?php echo $filePath . "zip.zip" ?>'>Download Zip with all the frames</a></label></li>
+				</ul>
+			</div>
+			<br>
+		</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </body>
 
 </html>
