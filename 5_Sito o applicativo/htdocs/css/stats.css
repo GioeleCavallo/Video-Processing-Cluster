@@ -1,43 +1,44 @@
-#drop_file_zone {
-	background-color: #EEE;
-    border: #999 5px dashed;
-    width: 300px;
-    height: 200px;
-    padding: 8px;
-    font-size: 18px;
+*{
+	
+  font-family: arial, sans-serif;
 }
-#drag_upload_file {
-	width:100%;
+#containerPie{
+	margin-left:5%;
 }
-#drag_upload_file p {
-  text-align: center;
+.title-container{
+	margin:10%;
 }
-#drag_upload_file #selectfile {
-	display: none;
+
+a:link {
+  color: #555;
+  background-color: transparent;
+  text-decoration: none;
 }
-body{
-	width: 50%;
-	height: 50%;
-	position: relative;
+a:visited {
+  color: #555;
+  background-color: transparent;
+  text-decoration: none;
 }
-#center{
-	width: 100%;
-	height: auto;
-	position: absolute;
-	left: 50%;
-	margin: -25px 0 0 -25px;
+a:hover {
+  color: #111;
+  background-color: transparent;
+  text-decoration: underline;
 }
-#title, #subTitle{
-	text-align: center;
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: auto;
 }
-#title_divisor{
-	border: 1px solid gray;
+
+td, th {
+  border: 1px solid #ddd;
+  padding: 8px;
 }
-#drop_file_zone, #subTitle_divisor{
-	position: relative;
-	width: 98.1%;
-	text-align: center;
+tr:nth-child(even) {
+  background-color: #ddd;
 }
-#drop_not_file_zone{
-	border: none;
+
+th:nth-child(odd) {
+	text-align: right;
 }
