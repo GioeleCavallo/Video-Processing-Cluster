@@ -1,0 +1,44 @@
+*{
+	
+  font-family: arial, sans-serif;
+}
+#containerPie{
+	margin-left:5%;
+}
+.title-container{
+	margin:10%;
+}
+
+a:link {
+  color: #555;
+  background-color: transparent;
+  text-decoration: none;
+}
+a:visited {
+  color: #555;
+  background-color: transparent;
+  text-decoration: none;
+}
+a:hover {
+  color: #111;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: auto;
+}
+
+td, th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+tr:nth-child(even) {
+  background-color: #ddd;
+}
+
+th:nth-child(odd) {
+	text-align: right;
+}
