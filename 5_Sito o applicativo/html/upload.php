@@ -8,6 +8,10 @@ for ($i = 0; $i < $c; ++$i) {
 $mem = new Memcached();
 $mem->addServers($servers);
 
+$handlerInfo = fopen("/var/www/log/info.log","a");
+$handlerError = fopen("/var/www/log/error.log","a");
+$txt = "";
+
 if (isset($_POST["submit"])) {
     $time = time();
     $target_dir = "upload/";
@@ -37,13 +41,16 @@ if (isset($_POST["submit"])) {
             $target_txt = "$target_dir$time/testo.txt";
             $shell_exec_video = "sh cmd.sh '$target_file' '$target_txt' '$target_dir$time/'";
             echo shell_exec($shell_exec_video);
-
             $comandoPerPermessiCartella = "chmod 777 -R $target_dir$time/";
             echo shell_exec("$comandoPerPermessiCartella");
             $GLOBALS["token"] = $time;
             $mem->add($GLOBALS["token"], $time);
+			$txt = date("d.m.y H:i:s")." : INFO : file ".$time." uploaded from ".$_SERVER['REMOTE_ADDR'] . PHP_EOL;
+			fwrite($handlerInfo,$txt);
             require "stats/stats.php";
         } else {
+			$txt = date("d.m.y H:i:s")." : ERROR : failed upload of ".$time." from ".$_SERVER['REMOTE_ADDR'] . PHP_EOL;
+			fwrite($handlerError,$txt);
             echo "Sorry, there was an error uploading your file.<br>";
         }
     } else {
@@ -60,3 +67,4 @@ if (isset($_POST["submit"])) {
         echo "non ok";
     }
 }
+fclose($handler);
