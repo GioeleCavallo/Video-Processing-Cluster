@@ -1,0 +1,33 @@
+body{
+    margin: 0px;
+}
+
+.main{
+    margin-left: 12.5%;
+    margin-right: 12.5%;
+}
+
+.title{
+	text-align: center;
+	font-family: Sans-serif;
+}
+
+.title_divisor{
+	border: 1px solid gray;
+}
+
+.subContainer{
+    margin-left: 25%;
+    margin-right: 25%;
+    width: 50%;
+}
+
+#send, #show{
+    float: right;
+    width: 18.5%;
+}
+
+.other{
+    width: 80%;
+    /*display: inline-block;*/
+}
