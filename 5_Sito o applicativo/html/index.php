@@ -1,12 +1,3 @@
-<?php
-$servers = explode(",", ini_get("session.save_path"));
-$c = count($servers);
-for ($i = 0; $i < $c; ++$i) {
-    $servers[$i] = explode(":", $servers[$i]);
-}
-$mem = new Memcached();
-$mem->addServers($servers);
-?>
 <!doctype html>
 <html>
 <head>
