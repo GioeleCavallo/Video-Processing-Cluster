@@ -9,6 +9,7 @@ $mem->addServers($servers);
 
 $filePath = "upload/" . $GLOBALS["token"] . "/";
 
+// return the data of the CSV.
 function getCsv($filePath)
 {
 	$nomeFile = $filePath . "testo.txt.csv";
@@ -23,7 +24,8 @@ function getCsv($filePath)
 }
 $data = getCsv($filePath);
 
-#####dati statistiche
+// get the info about the data.
+// get count of frame I, B, P and set a different color for each type of frame.
 $quantitaB = 0;
 $quantitaI = 0;
 $quantitaP = 0;
@@ -45,6 +47,8 @@ for ($i = 0; $i < COUNT($data); $i++) {
 		}
 	}
 }
+
+// get the timestamp information about each frame.
 $timeStamp = array();
 for ($i = 2; $i < COUNT($data); $i++) {
 	$timeStamp[] = $data[$i][4];
@@ -107,7 +111,7 @@ $P = round($quantitaP / $totale * 100);
 				<canvas id="frequencyChart"></canvas>
 			</div>
 			<script>
-				// percentige
+				// set the data for the pie chart.
 				var xValues = ["Frame: B", "Frame: I", "Frame: P"];
 				var yValues = [<?php echo $quantitaB; ?>, <?php echo $quantitaI; ?>, <?php echo $quantitaP; ?>];
 				var barColors = ["red", "green", "blue"];
@@ -117,6 +121,7 @@ $P = round($quantitaP / $totale * 100);
 						text: "Frequency Frame"
 					},
 				};
+
 				var ctx = document.getElementById("pieChart").getContext('2d');
 				new Chart(ctx, {
 					type: "pie",
